@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysgsignin.wxinfo.mapper.WxUserInfoMapper">
+
+    <resultMap type="WxUserInfo" id="WxUserInfoResult">
+        <result property="wxUserid"    column="wx_userid"    />
+        <result property="wxUseropenid"    column="wx_useropenid"    />
+        <result property="wxUsernickname"    column="wx_usernickname"    />
+        <result property="wxUsergender"    column="wx_usergender"    />
+        <result property="wxUseravatarurl"    column="wx_useravatarurl"    />
+        <result property="wxIsadmin"    column="wx_isadmin"    />
+        <result property="registerDate"    column="registerDate"    />
+        <result property="lastloginDate"    column="lastloginDate"    />
+        <result property="wxUserstatus"    column="wx_userstatus"    />
+        <result property="wxUsercode"    column="wx_usercode"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWxUserInfoVo">
+        select wx_userid, wx_useropenid, wx_usernickname, wx_usergender, wx_useravatarurl, wx_isadmin, registerDate, lastloginDate, wx_userstatus, wx_usercode, create_time, update_by, update_time, remark from wx_user_info
+    </sql>
+
+    <select id="selectWxUserInfoList" parameterType="WxUserInfo" resultMap="WxUserInfoResult">
+        <include refid="selectWxUserInfoVo"/>
+        <where>
+            <if test="wxUsernickname != null  and wxUsernickname != ''"> and wx_usernickname like concat('%', #{wxUsernickname}, '%')</if>
+            <if test="wxUsergender != null "> and wx_usergender = #{wxUsergender}</if>
+            <if test="registerDate != null "> and registerDate = #{registerDate}</if>
+            <if test="lastloginDate != null "> and lastloginDate = #{lastloginDate}</if>
+            <if test="wxUserstatus != null  and wxUserstatus != ''"> and wx_userstatus = #{wxUserstatus}</if>
+        </where>
+    </select>
+
+    <select id="selectWxUserInfoByWxUserid" parameterType="Long" resultMap="WxUserInfoResult">
+        <include refid="selectWxUserInfoVo"/>
+        where wx_userid = #{wxUserid}
+    </select>
+
+    <select id="selectWxUserInfoByWxUseropenid" parameterType="string" resultMap="WxUserInfoResult">
+        <include refid="selectWxUserInfoVo"/>
+            where wx_useropenid = #{openid}
+    </select>
+
+
+    <insert id="insertWxUserInfo" parameterType="WxUserInfo">
+        insert into wx_user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wxUserid != null">wx_userid,</if>
+            <if test="wxUseropenid != null">wx_useropenid,</if>
+            <if test="wxUsernickname != null">wx_usernickname,</if>
+            <if test="wxUsergender != null">wx_usergender,</if>
+            <if test="wxUseravatarurl != null">wx_useravatarurl,</if>
+            <if test="wxIsadmin != null">wx_isadmin,</if>
+            <if test="registerDate != null">registerDate,</if>
+            <if test="lastloginDate != null">lastloginDate,</if>
+            <if test="wxUserstatus != null">wx_userstatus,</if>
+            <if test="wxUsercode != null">wx_usercode,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="wxUserid != null">#{wxUserid},</if>
+            <if test="wxUseropenid != null">#{wxUseropenid},</if>
+            <if test="wxUsernickname != null">#{wxUsernickname},</if>
+            <if test="wxUsergender != null">#{wxUsergender},</if>
+            <if test="wxUseravatarurl != null">#{wxUseravatarurl},</if>
+            <if test="wxIsadmin != null">#{wxIsadmin},</if>
+            <if test="registerDate != null">#{registerDate},</if>
+            <if test="lastloginDate != null">#{lastloginDate},</if>
+            <if test="wxUserstatus != null">#{wxUserstatus},</if>
+            <if test="wxUsercode != null">#{wxUsercode},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWxUserInfo" parameterType="WxUserInfo">
+        update wx_user_info
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="wxUseropenid != null">wx_useropenid = #{wxUseropenid},</if>
+            <if test="wxUsernickname != null">wx_usernickname = #{wxUsernickname},</if>
+            <if test="wxUsergender != null">wx_usergender = #{wxUsergender},</if>
+            <if test="wxUseravatarurl != null">wx_useravatarurl = #{wxUseravatarurl},</if>
+            <if test="wxIsadmin != null">wx_isadmin = #{wxIsadmin},</if>
+            <if test="registerDate != null">registerDate = #{registerDate},</if>
+            <if test="lastloginDate != null">lastloginDate = #{lastloginDate},</if>
+            <if test="wxUserstatus != null">wx_userstatus = #{wxUserstatus},</if>
+            <if test="wxUsercode != null">wx_usercode = #{wxUsercode},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where wx_userid = #{wxUserid}
+    </update>
+
+    <delete id="deleteWxUserInfoByWxUserid" parameterType="Long">
+        delete from wx_user_info where wx_userid = #{wxUserid}
+    </delete>
+
+    <delete id="deleteWxUserInfoByWxUserids" parameterType="String">
+        delete from wx_user_info where wx_userid in
+        <foreach item="wxUserid" collection="array" open="(" separator="," close=")">
+            #{wxUserid}
+        </foreach>
+    </delete>
+</mapper>

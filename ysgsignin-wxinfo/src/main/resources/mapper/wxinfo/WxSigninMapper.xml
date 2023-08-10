@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysgsignin.wxinfo.mapper.WxSigninMapper">
+
+    <resultMap type="WxSignin" id="WxSigninResult">
+        <result property="signinId"    column="signin_id"    />
+        <result property="signinClazzid"    column="signin_clazzid"    />
+        <result property="signinClazzname"    column="signin_clazzname"    />
+        <result property="signinTeachername"    column="signin_teachername"    />
+        <result property="signinUsername"    column="signin_username"    />
+        <result property="signinStatus"    column="signin_status"    />
+        <result property="signinType"    column="signin_type"    />
+        <result property="signinAddimg"    column="signin_addimg"    />
+        <result property="signinAddimgreturn"    column="signin_addimgreturn"    />
+        <result property="signinStarttime"    column="signin_starttime"    />
+        <result property="signinEndttime"    column="signin_endttime"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWxSigninVo">
+        select signin_id, signin_clazzid, signin_clazzname, signin_teachername, signin_addimgreturn,signin_username, signin_status, signin_type,signin_addimg, signin_starttime, signin_endttime, status, create_by, create_time, update_by, update_time, remark from wx_signin
+    </sql>
+
+    <select id="selectWxSigninList" parameterType="WxSignin" resultMap="WxSigninResult">
+        <include refid="selectWxSigninVo"/>
+        <where>
+            <if test="signinClazzid != null "> and signin_clazzid = #{signinClazzid}</if>
+            <if test="signinClazzname != null  and signinClazzname != ''"> and signin_clazzname like concat('%', #{signinClazzname}, '%')</if>
+            <if test="signinTeachername != null  and signinTeachername != ''"> and signin_teachername like concat('%', #{signinTeachername}, '%')</if>
+            <if test="signinUsername != null  and signinUsername != ''"> and signin_username like concat('%', #{signinUsername}, '%')</if>
+            <if test="signinStatus != null  and signinStatus != ''"> and signin_status = #{signinStatus}</if>
+            <if test="signinType != null  and signinType != ''"> and signin_type = #{signinType}</if>
+        </where>
+    </select>
+
+    <select id="selectWxSigninBySigninId" parameterType="Long" resultMap="WxSigninResult">
+        <include refid="selectWxSigninVo"/>
+        where signin_id = #{signinId}
+    </select>
+
+    <select id="selectWxSigninBySigninUserName"  resultMap="WxSigninResult">
+        SELECT * FROM `wx_signin`  where signin_username=#{UserName} order by signin_endttime Desc
+    </select>
+
+    <insert id="insertWxSignin" parameterType="WxSignin">
+        insert into wx_signin
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="signinId != null">signin_id,</if>
+            <if test="signinClazzid != null">signin_clazzid,</if>
+            <if test="signinClazzname != null">signin_clazzname,</if>
+            <if test="signinTeachername != null">signin_teachername,</if>
+            <if test="signinUsername != null">signin_username,</if>
+            <if test="signinStatus != null">signin_status,</if>
+            <if test="signinType != null">signin_type,</if>
+            <if test="signinAddimg != null">signin_addimg,</if>
+            <if test="signinAddimgreturn != null">signin_addimgreturn,</if>
+            <if test="signinStarttime != null">signin_starttime,</if>
+            <if test="signinEndttime != null">signin_endttime,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="signinId != null">#{signinId},</if>
+            <if test="signinClazzid != null">#{signinClazzid},</if>
+            <if test="signinClazzname != null">#{signinClazzname},</if>
+            <if test="signinTeachername != null">#{signinTeachername},</if>
+            <if test="signinUsername != null">#{signinUsername},</if>
+            <if test="signinStatus != null">#{signinStatus},</if>
+            <if test="signinType != null">#{signinType},</if>
+            <if test="signinAddimg != null">#{signinAddimg},</if>
+            <if test="signinAddimgreturn != null">#{signinAddimgreturn},</if>
+            <if test="signinStarttime != null">#{signinStarttime},</if>
+            <if test="signinEndttime != null">#{signinEndttime},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWxSignin" parameterType="WxSignin">
+        update wx_signin
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="signinClazzid != null">signin_clazzid = #{signinClazzid},</if>
+            <if test="signinClazzname != null">signin_clazzname = #{signinClazzname},</if>
+            <if test="signinTeachername != null">signin_teachername = #{signinTeachername},</if>
+            <if test="signinUsername != null">signin_username = #{signinUsername},</if>
+            <if test="signinStatus != null">signin_status = #{signinStatus},</if>
+            <if test="signinType != null">signin_type = #{signinType},</if>
+            <if test="signinAddimg != null">signin_addimg = #{signinAddimg},</if>
+            <if test="signinAddimgreturn != null">signin_addimgreturn = #{signinAddimgreturn},</if>
+            <if test="signinStarttime != null">signin_starttime = #{signinStarttime},</if>
+            <if test="signinEndttime != null">signin_endttime = #{signinEndttime},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where signin_id = #{signinId}
+    </update>
+
+    <delete id="deleteWxSigninBySigninId" parameterType="Long">
+        delete from wx_signin where signin_id = #{signinId}
+    </delete>
+
+    <delete id="deleteWxSigninBySigninIds" parameterType="String">
+        delete from wx_signin where signin_id in
+        <foreach item="signinId" collection="array" open="(" separator="," close=")">
+            #{signinId}
+        </foreach>
+    </delete>
+
+<!--    统计每一个班上的签到数据信息-->
+    <select id="signinEchartsCountSumStatus" resultType="hashmap">
+--      未签到 0
+--      已签到-普通签到和位置签到 1
+--      补签到 2
+--      申请请假 3
+--      已签到-二维码扫码的数据签到 4
+        SELECT signin_clazzname,
+               (CASE signin_status
+                    WHEN '0' THEN '未签到'
+                    WHEN '2' THEN '补签到'
+                    WHEN '3' THEN '申请请假'
+                    ELSE '已签到'
+                   END) AS signin_info,count(signin_status) AS countsum
+        FROM
+            `wx_signin`
+        GROUP BY
+            signin_clazzname,signin_info
+        ORDER BY  signin_clazzname
+    </select>
+
+<!-- 查看各班级总人数 -->
+    <select id="getEchartscalzzbanjiSum" resultType="hashmap">
+        SELECT clazz_name as name,clazz_sum AS value FROM `wx_clazz` ORDER BY clazz_sum DESC
+    </select>
+
+<!--  查看学生个人申请请假记录   -->
+    <select id="getApplicationmyleaverecord" resultMap="WxSigninResult">
+        SELECT signin_clazzname,signin_username,signin_teachername,signin_addimgreturn FROM `wx_signin`
+        WHERE signin_status='3' AND signin_username=#{signinUsername}
+    </select>
+
+</mapper>

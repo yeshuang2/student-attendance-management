@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysgsignin.wxinfo.mapper.WxClazzMapper">
+
+    <resultMap type="WxClazz" id="WxClazzResult">
+        <result property="clazzId"    column="clazz_id"    />
+        <result property="clazzName"    column="clazz_name"    />
+        <result property="userId"    column="user_id"    />
+        <result property="userName"    column="user_name"    />
+        <result property="clazzSum"    column="clazz_sum"    />
+        <result property="teacherId"    column="teacher_id"    />
+        <result property="teacherName"    column="teacher_name"    />
+        <result property="status"    column="status"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWxClazzVo">
+        select clazz_id, clazz_name,clazz_sum, user_id, user_name, teacher_id, teacher_name, status, create_by, create_time, update_by, update_time, remark from wx_clazz
+    </sql>
+
+    <select id="selectWxClazzList" parameterType="WxClazz" resultMap="WxClazzResult">
+        <include refid="selectWxClazzVo"/>
+        <where>
+            <if test="clazzName != null "> and clazz_name like concat('%', #{clazzName}, '%')</if>
+            <if test="userName != null  and userName != ''"> and user_name like concat('%', #{userName}, '%')</if>
+            <if test="teacherName != null  and teacherName != ''"> and teacher_name like concat('%', #{teacherName}, '%')</if>
+            <if test="status != null  and status != ''"> and status = #{status}</if>
+        </where>
+    </select>
+
+    <select id="selectWxClazzByClazzId" parameterType="Long" resultMap="WxClazzResult">
+        <include refid="selectWxClazzVo"/>
+        where clazz_id = #{clazzId}
+    </select>
+
+<!--   班级id 和班级名称 -->
+    <select id="selectWxClazzNameAndList" resultMap="WxClazzResult">
+        SELECT clazz_id,clazz_name from wx_clazz
+    </select>
+
+<!--    查询个人 所在的班级数据信息-->
+    <select id="selectWxClazzLikeNameAndList" parameterType="string" resultMap="WxClazzResult">
+        SELECT clazz_name,clazz_sum,user_name,teacher_name,create_time FROM `wx_clazz` WHERE user_name  like concat('%', #{userName}, '%')
+    </select>
+
+    <insert id="insertWxClazz" parameterType="WxClazz" useGeneratedKeys="true" keyProperty="clazzId">
+        insert into wx_clazz
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="clazzName != null">clazz_name,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="userName != null">user_name,</if>
+            <if test="teacherId != null">teacher_id,</if>
+            <if test="teacherName != null">teacher_name,</if>
+            <if test="clazzSum != null">clazz_sum,</if>
+            <if test="status != null">status,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="clazzName != null">#{clazzName},</if>
+            <if test="clazzSum != null">#{clazz_sum},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="userName != null">#{userName},</if>
+            <if test="teacherId != null">#{teacherId},</if>
+            <if test="teacherName != null">#{teacherName},</if>
+            <if test="status != null">#{status},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWxClazz" parameterType="WxClazz">
+        update wx_clazz
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="clazzName != null">clazz_name = #{clazzName},</if>
+            <if test="clazzSum != null">clazz_sum = #{clazzSum},</if>
+            <if test="userId != null">user_id = #{userId},</if>
+            <if test="userName != null">user_name = #{userName},</if>
+            <if test="teacherId != null">teacher_id = #{teacherId},</if>
+            <if test="teacherName != null">teacher_name = #{teacherName},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where clazz_id = #{clazzId}
+    </update>
+
+    <delete id="deleteWxClazzByClazzId" parameterType="Long">
+        delete from wx_clazz where clazz_id = #{clazzId}
+    </delete>
+
+    <delete id="deleteWxClazzByClazzIds" parameterType="String">
+        delete from wx_clazz where clazz_id in
+        <foreach item="clazzId" collection="array" open="(" separator="," close=")">
+            #{clazzId}
+        </foreach>
+    </delete>
+</mapper>

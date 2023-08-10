@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ysgsignin.wxinfo.mapper.WxCourseMapper">
+    
+    <resultMap type="WxCourse" id="WxCourseResult">
+        <result property="wxCourseid"    column="wx_courseid"    />
+        <result property="wxCoursename"    column="wx_coursename"    />
+        <result property="wxCourseCode"    column="wx_course_code"    />
+        <result property="wxCourseClazzid"    column="wx_course_clazzid"    />
+        <result property="wxCourseTeacherid"    column="wx_course_teacherid"    />
+        <result property="wxCourseTeachername"    column="wx_course_teachername"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectWxCourseVo">
+        select wx_courseid, wx_coursename, wx_course_code, wx_course_clazzid, wx_course_teacherid, wx_course_teachername, create_by, create_time, update_by, update_time, remark from wx_course
+    </sql>
+
+    <select id="selectWxCourseList" parameterType="WxCourse" resultMap="WxCourseResult">
+        <include refid="selectWxCourseVo"/>
+        <where>  
+            <if test="wxCoursename != null  and wxCoursename != ''"> and wx_coursename like concat('%', #{wxCoursename}, '%')</if>
+            <if test="wxCourseCode != null  and wxCourseCode != ''"> and wx_course_code = #{wxCourseCode}</if>
+        </where>
+    </select>
+    
+    <select id="selectWxCourseByWxCourseid" parameterType="Long" resultMap="WxCourseResult">
+        <include refid="selectWxCourseVo"/>
+        where wx_courseid = #{wxCourseid}
+    </select>
+        
+    <insert id="insertWxCourse" parameterType="WxCourse" useGeneratedKeys="true" keyProperty="wxCourseid">
+        insert into wx_course
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="wxCoursename != null">wx_coursename,</if>
+            <if test="wxCourseCode != null">wx_course_code,</if>
+            <if test="wxCourseClazzid != null">wx_course_clazzid,</if>
+            <if test="wxCourseTeacherid != null">wx_course_teacherid,</if>
+            <if test="wxCourseTeachername != null">wx_course_teachername,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="wxCoursename != null">#{wxCoursename},</if>
+            <if test="wxCourseCode != null">#{wxCourseCode},</if>
+            <if test="wxCourseClazzid != null">#{wxCourseClazzid},</if>
+            <if test="wxCourseTeacherid != null">#{wxCourseTeacherid},</if>
+            <if test="wxCourseTeachername != null">#{wxCourseTeachername},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateWxCourse" parameterType="WxCourse">
+        update wx_course
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="wxCoursename != null">wx_coursename = #{wxCoursename},</if>
+            <if test="wxCourseCode != null">wx_course_code = #{wxCourseCode},</if>
+            <if test="wxCourseClazzid != null">wx_course_clazzid = #{wxCourseClazzid},</if>
+            <if test="wxCourseTeacherid != null">wx_course_teacherid = #{wxCourseTeacherid},</if>
+            <if test="wxCourseTeachername != null">wx_course_teachername = #{wxCourseTeachername},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where wx_courseid = #{wxCourseid}
+    </update>
+
+    <delete id="deleteWxCourseByWxCourseid" parameterType="Long">
+        delete from wx_course where wx_courseid = #{wxCourseid}
+    </delete>
+
+    <delete id="deleteWxCourseByWxCourseids" parameterType="String">
+        delete from wx_course where wx_courseid in 
+        <foreach item="wxCourseid" collection="array" open="(" separator="," close=")">
+            #{wxCourseid}
+        </foreach>
+    </delete>
+</mapper>
