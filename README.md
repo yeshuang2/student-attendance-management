@@ -8,6 +8,8 @@
 
 后期会不断优化、如果满意给个Star星吧！以此鼓励、谢谢支持呀！
 
+[注意]： 最新代码都在gitee平台上
+https://gitee.com/ye-shuang
 
 ## 内置功能
 
