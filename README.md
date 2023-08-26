@@ -20,20 +20,13 @@
 
  
 ## 效果图展示
-![输入图片说明](%E5%AD%A6%E7%94%9F%E8%80%83%E5%8B%A4%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%9B%BE.png)
+![1691649614583](https://github.com/yeshuang2/student-attendance-management/assets/65081283/aba9b494-621b-46aa-ae8c-956385776c25)
+
+![学生考勤管理模块图](https://github.com/yeshuang2/student-attendance-management/assets/65081283/4cf8b6b5-5000-4f39-b715-e784c9bbbbbd)
+
+![1691649751093](https://github.com/yeshuang2/student-attendance-management/assets/65081283/50b068da-872a-4226-96db-91975a2a4b3a)
 
 
-![输入图片说明](1691649751093.jpg)
-
-![输入图片说明](1691649782866.jpg)
-
-![输入图片说明](1691649614583.jpg)
-
-![输入图片说明](1691649680402.jpg)
-
-![输入图片说明](1691649579537.png)
-
-![输入图片说明](1691649662109.jpg)
 
 持续更新中......
 
