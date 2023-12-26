@@ -41,8 +41,8 @@ public class WxLoginController {
 //    public AjaxResult WxLogin(String code,String nickName,String gender,String avatarUrl) {
 //        String url = "https://api.weixin.qq.com/sns/jscode2session"; //之前写法
 //        Map<String, String> param = new HashMap<String, String>();
-//        param.put("appid", "wxfd52bca8ae584d50");
-//        param.put("secret", "b8a154c582c7aff4600e871205a36116");
+//        param.put("appid", "");
+//        param.put("secret", "");
 //        param.put("js_code", code);
 //        param.put("grant_type", "authorization_code");
 //        String wxResult = HttpClientUtil.doGet(url, param);
