@@ -55,6 +55,10 @@
 ![1691649751093](https://github.com/yeshuang2/student-attendance-management/assets/65081283/50b068da-872a-4226-96db-91975a2a4b3a)
 
 
+![1733445000605](https://github.com/user-attachments/assets/eebb452a-6bd1-41bf-9a6e-bc734a9f0d10)
+
+![1733445266686](https://github.com/user-attachments/assets/b3897503-795f-4b87-9e0a-c741a070c760)
+
 
 持续更新中......
 
