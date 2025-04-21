@@ -2,7 +2,7 @@
 # 学生考勤管理系统
 
 #### 项目介绍
-基于Ruoyi+uniapp （前后端分离项目） 实现学生考勤系统
+基于Ruoyi+uniapp （前后端分离项目） 实现学生宿舍考勤管理系统
 学生考勤（普通、位置、二维码、人脸识别签到）、以及可视化数据展示
 使用阿里云人脸识别+OSS存储
 微信小程序密码、微信授权登录均可实现！
@@ -58,13 +58,18 @@
 1. 新增功能：定时任务调度、获取当天缺勤、请假的人员进行、整理推送给相应的辅导员（通过邮件方式发送）
 ~~~
 
-## 更新日志：2025年3月24日
+## 更新日志：2025年4月24日
 ~~~
-1. 新增功能：新增教学管理员（管理自己学院的教师和学生）每门课的出勤率（汇总）、每个班级的出勤率（汇总）。
-2. 新增功能：优化学生签到查询界面（树形下拉查询）
+1. 新增功能：新增角色（班主任、辅导员、宿管管理员）登录不同角色展现不同的菜单
+2. 新增功能：宿舍管理员发起签到（楼层进行发起）同时可以进行楼层、宿舍、学生进行安排入住等操作
+3. 新增功能：辅导员查看自己管理学院下的考勤数据（可视化）、以及班级对应下的学生签到情况
+4. 新增功能：通过签到时间范围（查询）展现班级为单位可视化、加直观展示数据
+5. 新增功能：班主任查看自己管理班级下的学生信息
+6. 新增功能：移动端新增请假功能（单独模块进行申请（上传多张图片）、由辅导员进行审核操作）
+6. 新增功能：移动端新增学生查看个人宿舍情况查询
 ~~~
 
-## 更新日志：2025年4月1日
+## 更新日志：2025年5月1日
 
 项目持续更新、优化中......
 
@@ -72,20 +77,28 @@
 ## 1、后台效果图展示
 <table>
     <tr>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E9%A6%96%E9%A1%B5.jpg"/></td>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E5%AD%A6%E7%94%9F%E8%80%83%E5%8B%A4%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97%E5%9B%BE.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%AD%A6%E7%94%9F%E4%BF%A1%E6%81%AF%E7%AE%A1%E7%90%86.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E8%BE%85%E5%AF%BC%E5%91%98%E7%AE%A1%E7%90%86.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/1745201467894.jpg"/></td>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E5%AE%BF%E8%88%8D%E7%AE%A1%E7%90%86%E6%95%B0%E6%8D%AE%E9%A1%B5%E9%9D%A2.jpg"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%AD%A6%E7%94%9F%E8%AF%B7%E5%81%87%E7%AE%A1%E7%90%86.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%AE%BF%E8%88%8D%E6%A5%BC%E5%B1%82%E7%AE%A1%E7%90%86.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/0ece8c60b10afb6e1deb1c530a136a6.png"/></td>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E7%8F%AD%E7%BA%A7%E5%8F%91%E8%B5%B7%E7%AD%BE%E5%88%B0%E9%A1%B5%E9%9D%A2%E6%95%B0%E6%8D%AE.jpg"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%8F%91%E8%B5%B7%E7%AD%BE%E5%88%B0.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%BD%92%E5%AE%BF%E6%8F%90%E9%86%92.png"/></td>
     </tr>	 
     <tr>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/aed53134a75a38350e8d5f7769ceb34.png"/></td>
-        <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/db01893a8da5edcc9dee5c3c71d9664.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E7%8F%AD%E4%B8%BB%E4%BB%BB%E7%AE%A1%E7%90%86.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E4%B8%AA%E4%BA%BA%E4%BA%BA%E8%84%B8%E4%B8%8A%E4%BC%A0%E5%90%8E%E5%8F%B0%E5%BA%93.png"/></td>
+    </tr>
+  <tr>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E7%AD%BE%E5%88%B0%E6%95%B0%E6%8D%AE.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%BD%93%E6%97%A5%E7%8F%AD%E7%BA%A7%E8%80%83%E5%8B%A4%E6%95%B0%E6%8D%AE.png"/></td>
+    </tr>
+  <tr>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E5%BD%93%E6%97%A5%E5%AD%A6%E9%99%A2%E7%8F%AD%E7%BA%A7%E5%AD%A6%E7%94%9F%E8%80%83%E5%8B%A4%E6%95%B0%E6%8D%AE.png"/></td>
+        <td><img src="https://gitee.com/ye-sgui/student-dormitory-check/raw/master/%E6%9F%A5%E8%AF%A2%E8%80%83%E5%8B%A4%E8%8C%83%E5%9B%B4%E8%80%83%E5%8B%A4%E6%95%B0%E6%8D%AE.png"/></td>
     </tr>
 </table>
 
