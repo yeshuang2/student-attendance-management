@@ -64,10 +64,18 @@
 2. 新增功能：优化学生签到查询界面（树形下拉查询）
 ~~~
 
-## 更新日志：2025年4月1日
+## 更新日志：2025年5月20日
+~~~
+1. 新增功能：使用腾讯地图API实现自定义多边形绘制、圆形和矩形绘制、以及清除和获取围栏经纬度的方法。
+2. 优化功能：自定义位置签到（移动端真机调试）范围内进行打卡签到（范围内不允许打卡）。
+~~~
 
 项目持续更新、优化中......
 
+## 更新日志：2025年6月20日
+~~~
+1. 预新增功能：拍照签到
+~~~
  
 ## 1、后台效果图展示
 <table>
@@ -91,6 +99,10 @@
          <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/db01893a8da5edcc9dee5c3c71d9664.png"/></td>
         <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E7%AD%BE%E5%88%B0%E6%95%B0%E6%8D%AE.png"/></td>
     </tr>
+ <tr>
+         <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E8%8C%83%E5%9B%B4%E5%86%85%E7%AD%BE%E5%88%B0.jpg"/></td>
+        <td></td>
+    </tr>
 </table>
 
 ## 2、移动端效果图展示
@@ -109,7 +121,7 @@
     </tr>	 
     <tr>
         <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E4%B8%AA%E4%BA%BA%E5%BA%93%E4%B8%8A%E4%BC%A0.png"/></td>
-        <td></td>
+     <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E8%8C%83%E5%9B%B4%E5%86%85%E7%AD%BE%E5%88%B0.png"/></td>
     </tr>
 </table>
 
