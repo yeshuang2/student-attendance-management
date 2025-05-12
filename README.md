@@ -1,9 +1,19 @@
 
-# 学生考勤管理系统
+<p align="center">
+	<img src="https://foruda.gitee.com/avatar/1709273255867667805/14090482_ye-sgui_1709273255.png!avatar100" alt="logo" style="max-width: 100%; height: auto;">
+</p>
+<h1 align="center" style="margin: 5px 0 30px; font-weight: bold;">学生考勤管理系统 v1.1.0</h1> <!-- 将顶部边距从 30px 改为 10px -->
+<h4 align="center">基于SpringBoot+Vue+uniapp前后端分离的学生考勤管理系统</h4>
+<div align="center">
+    <img src="https://img.shields.io/badge/Spring%20Boot-2.5.15-green?logo=springboot" alt="Spring Boot">
+    <img src="https://img.shields.io/badge/Vue-2.6.12-brightgreen?logo=vue.js" alt="Vue">
+    <img src="https://img.shields.io/badge/License-MIT-blue" alt="License">
+  </div>
+
 
 #### 项目介绍
-基于Ruoyi+uniapp （前后端分离项目） 实现学生考勤系统
-学生考勤（普通、位置、二维码、人脸识别签到）、以及可视化数据展示
+基于Ruoyi+Uniapp（前后端分离项目）实现学生考勤系统
+学生考勤（口头点名签到、普通签到、位置签(自定义范围签到）、二维码签到、人脸识别签到、手势签到(九宫格)、签到码签到）、以及可视化数据展示
 使用阿里云人脸识别+OSS存储
 微信小程序密码、微信授权登录均可实现！
 
@@ -64,18 +74,19 @@
 2. 新增功能：优化学生签到查询界面（树形下拉查询）
 ~~~
 
-## 更新日志：2025年5月20日
+## 更新日志：2025年5月6日
 ~~~
 1. 新增功能：使用腾讯地图API实现自定义多边形绘制、圆形和矩形绘制、以及清除和获取围栏经纬度的方法。
 2. 优化功能：自定义位置签到（移动端真机调试）范围内进行打卡签到（范围内不允许打卡）。
 ~~~
 
-项目持续更新、优化中......
+## 更新日志：2025年5月10日
+~~~
+1. 新增功能：签到码签到（数字/字符）
+2. 新增功能：手势签到（九宫格）
+~~~
 
-## 更新日志：2025年6月20日
-~~~
-1. 预新增功能：拍照签到
-~~~
+项目持续更新、优化中......
  
 ## 1、后台效果图展示
 <table>
@@ -101,7 +112,7 @@
     </tr>
  <tr>
          <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E8%8C%83%E5%9B%B4%E5%86%85%E7%AD%BE%E5%88%B0.jpg"/></td>
-        <td></td>
+    <td><img src="https://gitee.com/ye-sgui/student-attendance/raw/master/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%89%8B%E5%8A%BF%E7%AD%BE%E5%88%B0.jpg"/></td>
     </tr>
 </table>
 
